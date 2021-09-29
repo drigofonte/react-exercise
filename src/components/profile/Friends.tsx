@@ -22,13 +22,14 @@ const Friends: React.FC<{ person: Person }> = ({ person }) => {
         if (friend) {
           return (
             <Link
+              key={friend.id}
               to={`/people/${friend.id}`}
               style={{
                 textDecoration: 'none',
                 color: 'initial'
               }}
             >
-              <ListItem key={friend.id}>
+              <ListItem>
                 <ListItemAvatar>
                   <Avatar alt={friend.name} src={friend.thumbnail} />
                 </ListItemAvatar>

@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from 'react-router-dom';
 import Person from "../../models/person";
 import * as Store from "../../store/store";
 import Friends from "./Friends";
@@ -26,7 +27,7 @@ describe('<Friends />', () => {
 
       jest.spyOn(Store, 'useStore').mockReturnValue([ { peopleNamesToIds, people }, (id, payload) => {} ]);
 
-      render(<Friends person={person} />);
+      render(<BrowserRouter><Friends person={person} /></BrowserRouter>);
 
       // Assert
       const johnAvatar = screen.getByAltText(john.name);
@@ -44,7 +45,7 @@ describe('<Friends />', () => {
 
       jest.spyOn(Store, 'useStore').mockReturnValue([ { peopleNamesToIds, people }, (id, payload) => {} ]);
 
-      render(<Friends person={person} />);
+      render(<BrowserRouter><Friends person={person} /></BrowserRouter>);
 
       // Assert
       const message = screen.getByText(/no friends/gmi);

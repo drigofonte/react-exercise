@@ -6,7 +6,9 @@ import PersonProfilePage from './pages/PersonProfile';
 
 function App() {
   return (
-    <Container maxWidth="lg">
+    <Container 
+      maxWidth="md"
+    >
       <Switch>
         <Route exact path="/">
           <Redirect to="/people" />

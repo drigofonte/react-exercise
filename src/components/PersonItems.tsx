@@ -1,34 +1,45 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PersonItem from './PersonItem';
 import Person from '../models/person';
-import PersonLoader from '../models/person-loader';
-import { Grid } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
+import { useStore } from '../store/store';
+import React, { useState } from 'react';
+
+const pageSize = 10;
 
 const PersonItems: React.FC = () => {
-  const [ people, setPeople ] = useState<Person[]>([]);
+  const [ state ] = useStore();
+  const { people }: { people?: Person[] } = state;
 
-  const setPeopleCallback = useCallback(async () => {
-    setPeople(await PersonLoader.getPeople());
-  }, []);
+  const [ page, setPage ] = useState(1);
+  const maxPages = Math.ceil(people!.length / 10);
+  const maxIndex = page * pageSize;
+  const minIndex = maxIndex - pageSize;
+  const peoplePage = people!.filter((p, i) => i >= minIndex && i < maxIndex);
 
-  useEffect(() => {
-    setPeopleCallback();
-  }, [setPeopleCallback]);
+  const setPageHandler = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   return (
-    <Grid
-      container
-      spacing={2}
-    >
-      {people!.map((person) => (
-        <Grid item xs>
-          <PersonItem
-            key={person.id}
-            person={person}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <Pagination count={maxPages} page={page} onChange={setPageHandler} />
+
+      <Grid
+        container
+        spacing={2}
+      >
+        {peoplePage.map((person) => (
+          <Grid key={person.id} item xs>
+            <Link to={`/people/${person.id}`}>
+              <PersonItem
+                person={person}
+              />
+            </Link>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 }
 

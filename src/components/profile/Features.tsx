@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, Grid, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import HeightOutlinedIcon from '@mui/icons-material/HeightOutlined';
 import MonitorWeightOutlinedIcon from '@mui/icons-material/MonitorWeightOutlined';

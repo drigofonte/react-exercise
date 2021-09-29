@@ -1,23 +1,26 @@
 import PersonLoader from '../models/person-loader';
 import Person from "../models/person";
 import { initStore } from "./store";
+import PersonUtils from '../models/person-utils';
 
 type StateObject = {
   people: Person[];
+  peopleNamesToIds: Map<string, number>;
 };
 
 const configureStore = () => {
   const actions: {[key: string]: (state: StateObject, payload: any) => {}} = {
     LOAD_PEOPLE: async () => {
       const people = await PersonLoader.getPeople();
-      return { people };
+      const peopleNamesToIds = PersonUtils.mapNamesToIds(people);
+      return { people, peopleNamesToIds };
     },
     SET_PEOPLE: (state, people) => {
       return { people };
     },
   };
 
-  initStore(actions, { people: [] });
+  initStore(actions, { people: [], peopleNamesToIds: {} });
 };
 
 export default configureStore;

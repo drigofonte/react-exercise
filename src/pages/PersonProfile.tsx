@@ -4,6 +4,7 @@ import { useStore } from '../store/store';
 
 import Details from '../components/profile/Details';
 import Features from '../components/profile/Features';
+import Friends from '../components/profile/Friends';
 import { Box } from '@mui/material';
 
 type PersonProfileParams = {
@@ -33,6 +34,11 @@ const PersonProfile = () => {
           flexGrow: 1
         }}>
           <Features person={person} />
+        </Box>
+        <Box sx={{
+          flexGrow: 1
+        }}>
+          <Friends person={person} />
         </Box>
       </Box>;
   }

@@ -22,10 +22,9 @@ const Details: React.FC<{ person: Person }> = ({ person }) => {
             width: 150,
             height: 150
           }} src={thumbnail} />
-          <Typography variant="h5" sx={{
+          <Typography variant="h4" sx={{
             mt: 3,
-            fontWeight: 'bold',
-            letterSpacing: '0.08em'
+            fontWeight: 700
           }}>{name}</Typography>
 
           <Box
@@ -39,7 +38,7 @@ const Details: React.FC<{ person: Person }> = ({ person }) => {
             {professions.map((p) => (
               <Chip 
                 key={p}
-                sx={{ mr: '6px' }}
+                sx={{ mr: '6px', mt: '12px' }}
                 label={p} 
               />
             ))}

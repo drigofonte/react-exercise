@@ -18,9 +18,10 @@ const Friends: React.FC<{ person: Person }> = ({ person }) => {
       {person.friends.map((friendName) => {
         const friendId = peopleNamesToIds?.get(friendName);
         const friend = findPerson(friendId, people!);
+        let content;
 
         if (friend) {
-          return (
+          content = (
             <Link
               key={friend.id}
               to={`/people/${friend.id}`}
@@ -40,6 +41,8 @@ const Friends: React.FC<{ person: Person }> = ({ person }) => {
             </Link>
           );
         }
+
+        return content;
       })}
     </List>;
   }

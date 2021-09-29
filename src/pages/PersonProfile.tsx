@@ -3,6 +3,7 @@ import Person from '../models/person';
 import { useStore } from '../store/store';
 
 import Details from '../components/profile/Details';
+import Features from '../components/profile/Features';
 import { Box } from '@mui/material';
 
 type PersonProfileParams = {
@@ -20,12 +21,18 @@ const PersonProfile = () => {
   if (person) {
     content = 
       <Box sx={{
-        display: 'flex'
+        display: 'flex',
+        flexDirection: 'column'
       }}>
         <Box sx={{
           flexGrow: 1
         }}>
           <Details person={person} />
+        </Box>
+        <Box sx={{
+          flexGrow: 1
+        }}>
+          <Features person={person} />
         </Box>
       </Box>;
   }

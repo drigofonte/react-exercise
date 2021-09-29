@@ -1,9 +1,6 @@
-import { Card, CardContent, CardHeader, Grid, ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
-import HeightOutlinedIcon from '@mui/icons-material/HeightOutlined';
-import MonitorWeightOutlinedIcon from '@mui/icons-material/MonitorWeightOutlined';
-import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
-import Person from "../../models/person";
+import { Card, CardContent, CardHeader, Grid } from "@mui/material";
+import Person, { Feature } from "../../models/person";
+import ListItemFeature from "../ListItemFeatures";
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { weightString, hair_color, heightString, age } = person;
@@ -24,74 +21,26 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
         }}
       />
       <CardContent>
-        <Grid container>
-          <Grid
-            item
-            xs
-            sx={{
-              pr: 1
-            }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <MonitorWeightOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="weight"
-                secondary={weightString}
-              />
-            </ListItem>
+        <Grid
+          container
+          sx={{
+            flexDirection: {
+              xs: 'column',
+              md: 'row'
+            }
+          }}
+        >         
+          <Grid item xs>
+            {ListItemFeature('age', age, Feature.age)}
           </Grid>
-          <Grid
-            item
-            xs
-            sx={{
-              pr: 1
-            }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <PaletteOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="hair colour"
-                secondary={hair_color}
-              />
-            </ListItem>
+          <Grid item xs>
+            {ListItemFeature('height', heightString, Feature.height)}
           </Grid>
-          <Grid
-            item
-            xs
-            sx={{
-              pr: 1
-            }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <HeightOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="height"
-                secondary={heightString}
-              />
-            </ListItem>
+          <Grid item xs>
+            {ListItemFeature('weight', weightString, Feature.weight)}
           </Grid>
-          <Grid
-            item
-            xs
-            sx={{
-              pr: 1
-            }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <CakeOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="age"
-                secondary={age}
-              />
-            </ListItem>
+          <Grid item xs>
+            {ListItemFeature('hair colour', hair_color, Feature.hair_color)}
           </Grid>
         </Grid>
       </CardContent>

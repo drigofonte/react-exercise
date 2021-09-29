@@ -1,3 +1,10 @@
+export enum Feature {
+  height,
+  weight,
+  hair_color,
+  age
+};
+
 class Person {
   id: number = -1;
   age: number = 0;

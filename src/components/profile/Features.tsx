@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, Card, CardContent, CardHeader, Grid, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import HeightOutlinedIcon from '@mui/icons-material/HeightOutlined';
 import MonitorWeightOutlinedIcon from '@mui/icons-material/MonitorWeightOutlined';
@@ -24,49 +24,76 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
         }}
       />
       <CardContent>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap'
-          }}
-        >
-          <ListItem>
-            <ListItemIcon>
-              <MonitorWeightOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="weight"
-              secondary={weight}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <PaletteOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Hair colour"
-              secondary={hair_color}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <HeightOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="height"
-              secondary={height}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <CakeOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="age"
-              secondary={age}
-            />
-          </ListItem>
-        </Box>
+        <Grid container>
+          <Grid
+            item
+            xs
+            sx={{
+              pr: 1
+            }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <MonitorWeightOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="weight"
+                secondary={weight}
+              />
+            </ListItem>
+          </Grid>
+          <Grid
+            item
+            xs
+            sx={{
+              pr: 1
+            }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <PaletteOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Hair colour"
+                secondary={hair_color}
+              />
+            </ListItem>
+          </Grid>
+          <Grid
+            item
+            xs
+            sx={{
+              pr: 1
+            }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <HeightOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="height"
+                secondary={height}
+              />
+            </ListItem>
+          </Grid>
+          <Grid
+            item
+            xs
+            sx={{
+              pr: 1
+            }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <CakeOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="age"
+                secondary={age}
+              />
+            </ListItem>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

@@ -6,7 +6,7 @@ import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import Person from "../../models/person";
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
-  const { weight, hair_color, height, age } = person;
+  const { weightString, hair_color, heightString, age } = person;
 
   return (
     <Card sx={{
@@ -38,7 +38,7 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
               </ListItemIcon>
               <ListItemText
                 primary="weight"
-                secondary={weight}
+                secondary={weightString}
               />
             </ListItem>
           </Grid>
@@ -54,7 +54,7 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
                 <PaletteOutlinedIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Hair colour"
+                primary="hair colour"
                 secondary={hair_color}
               />
             </ListItem>
@@ -72,7 +72,7 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
               </ListItemIcon>
               <ListItemText
                 primary="height"
-                secondary={height}
+                secondary={heightString}
               />
             </ListItem>
           </Grid>

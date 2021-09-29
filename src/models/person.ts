@@ -7,7 +7,19 @@ class Person {
   name: string = '';
   professions: string[] = [];
   thumbnail: string = '';
-  weight: number = 0;;
+  weight: number = 0;
+
+  public get weightString(): string {
+    return this.round(this.weight);
+  }
+
+  public get heightString(): string {
+    return this.round(this.height);
+  }
+
+  private round(val: number): string {
+    return (Math.round(val * 100) / 100).toFixed(2);
+  }
 }
 
 export default Person;

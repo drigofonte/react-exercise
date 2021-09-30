@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Item from './item/Item';
 import Person from '../../models/person';
-import { Grid, Pagination } from '@mui/material';
+import { Grid, Pagination, Stack, Typography } from '@mui/material';
 import { useStore } from '../../store/store';
 import React, { useState } from 'react';
 
@@ -22,12 +22,32 @@ const Items: React.FC = () => {
   };
 
   return (
-    <div>
-      <Pagination count={maxPages} page={page} onChange={setPageHandler} />
-
+    <Stack
+      sx={{
+        p: 5
+      }}
+    >
+      <Typography
+        variant="h4" 
+        sx={{
+          mt: 1,
+          fontWeight: 700
+        }}
+      >
+        People
+      </Typography>
+      <Typography
+        variant="caption" 
+      >
+        Page {page} / {maxPages}
+      </Typography>
+      
       <Grid
         container
-        spacing={2}
+        spacing={1}
+        sx={{
+          mt: 4
+        }}
       >
         {peoplePage.map((person) => (
           <Grid key={person.id} item xs>
@@ -45,7 +65,17 @@ const Items: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+
+      <Pagination
+        count={maxPages}
+        page={page}
+        onChange={setPageHandler}
+        sx={{
+          mx: 'auto',
+          py: 4
+        }}
+      />
+    </Stack>
   );
 }
 

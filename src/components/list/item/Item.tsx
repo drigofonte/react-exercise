@@ -7,11 +7,16 @@ import Professions from './Professions';
 
 const Item: React.FC<{ person: Person }> = ({ person }) => {
   return (
-    <Card sx={{
-      marginBottom: 2, 
-      maxWidth: 360,
-      minWidth: 320
-    }}>
+    <Card
+      elevation={0}
+      sx={{
+        marginBottom: 2, 
+        maxWidth: 360,
+        minWidth: 320,
+        borderRadius: 3,
+        border: '1px #e0dfdc solid'
+      }}
+    >
       <CardContent sx={{ margin: 'auto' }}>
         <Header person={person} />
         <Professions person={person} />

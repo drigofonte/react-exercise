@@ -6,6 +6,7 @@ import PersonUtils from '../models/person-utils';
 type StateObject = {
   people: Person[];
   peopleNamesToIds: Map<string, number>;
+  page: number;
 };
 
 const configureStore = () => {
@@ -18,9 +19,12 @@ const configureStore = () => {
     SET_PEOPLE: (state, people) => {
       return { people };
     },
+    SET_PAGE: (state, page) => {
+      return { page };
+    },
   };
 
-  initStore(actions, { people: [], peopleNamesToIds: {} });
+  initStore(actions, { people: [], peopleNamesToIds: {}, page: 1 });
 };
 
 export default configureStore;

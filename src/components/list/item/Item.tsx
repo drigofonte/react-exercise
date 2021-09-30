@@ -4,17 +4,17 @@ import Person from '../../../models/person';
 import Features from './Features';
 import Header from './Header';
 import Professions from './Professions';
+import '../../Card.css';
 
 const Item: React.FC<{ person: Person }> = ({ person }) => {
   return (
     <Card
+      className="base-card"
       elevation={0}
       sx={{
         marginBottom: 2, 
         maxWidth: 360,
-        minWidth: 320,
-        borderRadius: 3,
-        border: '1px #e0dfdc solid'
+        minWidth: 320
       }}
     >
       <CardContent sx={{ margin: 'auto' }}>

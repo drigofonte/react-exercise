@@ -3,6 +3,7 @@ import { Avatar, Card, CardContent, CardHeader, List, ListItem, ListItemAvatar, 
 import Person from "../../models/person";
 import { useStore } from "../../store/store";
 import './Profile.css';
+import '../Card.css';
 
 function findPerson(id: number | undefined, people: Person[]): Person | undefined {
   return people.find((person) => person.id === id);
@@ -50,7 +51,7 @@ const Friends: React.FC<{ person: Person }> = ({ person }) => {
 
   return (
     <Card 
-      className="profile-card"
+      className="base-card profile-card"
       elevation={0}
     >
       <CardHeader

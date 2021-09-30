@@ -2,13 +2,14 @@ import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 import Person, { Feature } from "../../models/person";
 import ListItemFeature from "../ListItemFeature";
 import './Profile.css';
+import '../Card.css';
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { weightString, hair_color, heightString, age } = person;
 
   return (
     <Card 
-      className="profile-card"
+      className="base-card profile-card"
       elevation={0}
     >
       <CardHeader

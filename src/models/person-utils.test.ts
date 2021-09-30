@@ -17,7 +17,38 @@ describe('PersonUtils', () => {
       expect(map.get(john.name)).toBe(1);
       expect(map.get(jane.name)).toBe(2);
     });
-  });  
+  });
+
+  describe('normalise friends', () => {
+    it('should make sure friends relations are transitive', () => {
+      // Arrange
+      const john = new Person();
+      john.id = 1;
+      john.name = 'John Doe';
+      const jane = new Person();
+      jane.id = 2;
+      jane.name = 'Jane Doe';
+
+      const lewis = new Person();
+      lewis.id = 3;
+      lewis.name = 'Lewis Smith';
+      const friends = [ john.name, jane.name ]
+      lewis.friends = [ ...friends ];
+
+      const namesToIds = new Map<string, number>();
+      namesToIds.set(john.name, john.id);
+      namesToIds.set(jane.name, jane.id);
+      namesToIds.set(lewis.name, lewis.id);
+
+      // Act
+      PersonUtils.normaliseFriends([ john, jane, lewis ], namesToIds);
+
+      // Assert
+      expect(lewis.friends).toEqual(friends);
+      expect(john.friends).toEqual([ lewis.name ]);
+      expect(jane.friends).toEqual([ lewis.name ]);
+    });
+  });
 });
 
 export {};

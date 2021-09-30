@@ -14,6 +14,7 @@ const configureStore = () => {
     LOAD_PEOPLE: async () => {
       const people = await PersonLoader.getPeople();
       const peopleNamesToIds = PersonUtils.mapNamesToIds(people);
+      PersonUtils.normaliseFriends(people, peopleNamesToIds);
       return { people, peopleNamesToIds };
     },
     SET_PEOPLE: (state, people) => {

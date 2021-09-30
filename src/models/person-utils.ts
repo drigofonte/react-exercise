@@ -8,6 +8,18 @@ class PersonUtils {
     }
     return map;
   }
+
+  public static normaliseFriends(people: Person[], namesToIdsMap: Map<string, number>): void {
+    for (let person of people) {
+      for (let friend of person.friends) {
+        const friendId = namesToIdsMap.get(friend);
+        const friendPerson = people.find((p) => p.id === friendId);
+        if (friendPerson) {
+          friendPerson.addFriend(person.name);
+        }
+      }
+    }
+  }
 }
 
 export default PersonUtils;

@@ -24,6 +24,12 @@ class Person {
     return `${this.round(this.height / 100)}m`;
   }
 
+  public addFriend(val: string): void {
+    if (!this.friends.includes(val)) {
+      this.friends.push(val);
+    }
+  }
+
   private round(val: number): string {
     return (Math.round(val * 100) / 100).toFixed(2);
   }

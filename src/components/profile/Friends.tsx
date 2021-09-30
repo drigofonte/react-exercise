@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Avatar, Card, CardContent, CardHeader, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import Person from "../../models/person";
 import { useStore } from "../../store/store";
+import './Profile.css';
 
 function findPerson(id: number | undefined, people: Person[]): Person | undefined {
   return people.find((person) => person.id === id);
@@ -48,12 +49,8 @@ const Friends: React.FC<{ person: Person }> = ({ person }) => {
   }
 
   return (
-    <Card sx={{
-        marginBottom: 2,
-        p: 2,
-        border: '1px #e0dfdc solid',
-        borderRadius: 3
-      }}
+    <Card 
+      className="profile-card"
       elevation={0}
     >
       <CardHeader

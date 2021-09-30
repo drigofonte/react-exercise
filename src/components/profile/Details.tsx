@@ -1,16 +1,13 @@
 import { Avatar, Box, Card, CardContent, Chip, Typography } from "@mui/material";
 import Person from "../../models/person";
+import './Profile.css';
 
 const Details: React.FC<{ person: Person }> = ({ person }) => {
   const { name, thumbnail, professions } = person;
 
   return (
-    <Card sx={{
-        marginBottom: 2,
-        p: 2,
-        border: '1px #e0dfdc solid',
-        borderRadius: 3
-      }}
+    <Card 
+      className="profile-card"
       elevation={0}
     >
       <CardContent>

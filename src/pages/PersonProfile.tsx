@@ -1,11 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Person from '../models/person';
 import { useStore } from '../store/store';
 
 import Details from '../components/profile/Details';
 import Features from '../components/profile/Features';
 import Friends from '../components/profile/Friends';
-import { Box } from '@mui/material';
+import { AppBar, Box, Button, Toolbar } from '@mui/material';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 
 type PersonProfileParams = {
   id: string
@@ -21,24 +22,48 @@ const PersonProfile = () => {
   let content = <div></div>;
   if (person) {
     content = 
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
+      <Box>
+        <AppBar
+          position="static"
+          color="transparent"
+          elevation={0}
+        >
+          <Toolbar>
+            <NavLink
+              to="/people"
+              style={{
+                textDecoration: 'none',
+                color: 'initial'
+              }}
+            >
+              <Button startIcon={<GridViewOutlinedIcon />}>
+                View people
+              </Button>
+            </NavLink>
+          </Toolbar>
+        </AppBar>
+
         <Box sx={{
-          flexGrow: 1
+          display: 'flex',
+          flexDirection: 'column',
+          mt: 4,
+          px: 2
         }}>
-          <Details person={person} />
-        </Box>
-        <Box sx={{
-          flexGrow: 1
-        }}>
-          <Features person={person} />
-        </Box>
-        <Box sx={{
-          flexGrow: 1
-        }}>
-          <Friends person={person} />
+          <Box sx={{
+            flexGrow: 1
+          }}>
+            <Details person={person} />
+          </Box>
+          <Box sx={{
+            flexGrow: 1
+          }}>
+            <Features person={person} />
+          </Box>
+          <Box sx={{
+            flexGrow: 1
+          }}>
+            <Friends person={person} />
+          </Box>
         </Box>
       </Box>;
   }

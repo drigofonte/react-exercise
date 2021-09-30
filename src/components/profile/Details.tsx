@@ -25,12 +25,15 @@ const Details: React.FC<{ person: Person }> = ({ person }) => {
             fontWeight: 700
           }}>{name}</Typography>
 
+          <Typography variant="h6" sx={{
+            mt: 2,
+            fontWeight: 200
+          }}>Professions</Typography>
           <Box
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              alignItems: 'flex-start',
-              mt: 2
+              alignItems: 'flex-start'
             }}
           >
             {professions.map((p) => (
@@ -38,6 +41,7 @@ const Details: React.FC<{ person: Person }> = ({ person }) => {
                 key={p}
                 sx={{ mr: '6px', mt: '12px' }}
                 label={p} 
+                color="primary"
               />
             ))}
           </Box>

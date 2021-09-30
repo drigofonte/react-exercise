@@ -20,7 +20,8 @@ const Professions: React.FC<{ person: Person }> = ({ person }) => {
           key={p}
           sx={{ mx: '2px', my: '2px' }}
           size="small" 
-          label={p} 
+          label={p}
+          color="primary"
         />
       ))}
     </Box>

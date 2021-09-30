@@ -10,9 +10,6 @@ const Details: React.FC<{ person: Person }> = ({ person }) => {
     <Card 
       className="profile-card base-card"      
       elevation={0}
-      sx={{
-        borderRadius: '0 0 12px 12px !important'
-      }}
     >
       <CardContent>
         <Box sx={{

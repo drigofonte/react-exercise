@@ -18,7 +18,7 @@ const PersonProfile = () => {
   const numId = Number(params.id);
   const person = people!.find((p) => p.id === numId);
 
-  let content = <div>Could not find this person</div>;
+  let content = <div></div>;
   if (person) {
     content = 
       <Box sx={{

@@ -4,6 +4,7 @@ import Person from '../../models/person';
 import { Grid, Pagination, Stack, Typography } from '@mui/material';
 import { useStore } from '../../store/store';
 import React from 'react';
+import ItemSkeleton from './item/ItemSkeleton';
 
 const pageSize = 10;
 
@@ -20,27 +21,31 @@ const Items: React.FC = () => {
     dispatch('SET_PAGE', value);
   };
 
-  return (
-    <Stack
+  let content = (
+    <Grid
+      container
+      spacing={1}
       sx={{
-        p: 5
+        mt: 4
       }}
     >
-      <Typography
-        variant="h4" 
-        sx={{
-          mt: 1,
-          fontWeight: 700
-        }}
-      >
-        People
-      </Typography>
-      <Typography
-        variant="caption" 
-      >
-        Page {page} / {maxPages}
-      </Typography>
-      
+      <Grid item xs>
+        <ItemSkeleton />
+      </Grid>
+      <Grid item xs>
+        <ItemSkeleton />
+      </Grid>
+      <Grid item xs>
+        <ItemSkeleton />
+      </Grid>
+      <Grid item xs>
+        <ItemSkeleton />
+      </Grid>
+    </Grid>
+  );
+
+  if (people!.length > 0) {
+    content = (
       <Grid
         container
         spacing={1}
@@ -64,6 +69,31 @@ const Items: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+    );
+  }
+
+  return (
+    <Stack
+      sx={{
+        p: 5
+      }}
+    >
+      <Typography
+        variant="h4" 
+        sx={{
+          mt: 1,
+          fontWeight: 700
+        }}
+      >
+        People
+      </Typography>
+      <Typography
+        variant="caption" 
+      >
+        {people!.length > 0 ? `Page ${page} / ${maxPages}` : 'Loading...'}
+      </Typography>
+      
+      {content}
 
       <Pagination
         count={maxPages}

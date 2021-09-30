@@ -5,17 +5,13 @@ import Features from './Features';
 import Header from './Header';
 import Professions from './Professions';
 import '../../Card.css';
+import './Item.css';
 
 const Item: React.FC<{ person: Person }> = ({ person }) => {
   return (
     <Card
-      className="base-card"
+      className="base-card item-card"
       elevation={0}
-      sx={{
-        marginBottom: 2, 
-        maxWidth: 360,
-        minWidth: 320
-      }}
     >
       <CardContent sx={{ margin: 'auto' }}>
         <Header person={person} />

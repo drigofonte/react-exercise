@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import PersonItem from './PersonItem';
-import Person from '../models/person';
+import Item from './item/Item';
+import Person from '../../models/person';
 import { Grid, Pagination } from '@mui/material';
-import { useStore } from '../store/store';
+import { useStore } from '../../store/store';
 import React, { useState } from 'react';
 
 const pageSize = 10;
 
-const PersonItems: React.FC = () => {
+const Items: React.FC = () => {
   const [ state ] = useStore();
   const { people }: { people?: Person[] } = state;
 
@@ -31,8 +31,14 @@ const PersonItems: React.FC = () => {
       >
         {peoplePage.map((person) => (
           <Grid key={person.id} item xs>
-            <Link to={`/people/${person.id}`}>
-              <PersonItem
+            <Link
+              to={`/people/${person.id}`}
+              style={{
+                textDecoration: 'none',
+                color: 'initial'
+              }}
+            >
+              <Item
                 person={person}
               />
             </Link>
@@ -43,4 +49,4 @@ const PersonItems: React.FC = () => {
   );
 }
 
-export default PersonItems;
+export default Items;

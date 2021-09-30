@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useStore } from '../store/store';
 
-import PersonItems from '../components/PersonItems';
+import Items from '../components/list/Items';
 import Person from '../models/person';
 
 const People = () => {
@@ -15,7 +15,7 @@ const People = () => {
   }, [dispatch, people]);
 
   return (
-    <PersonItems />
+    <Items />
   );
 };
 

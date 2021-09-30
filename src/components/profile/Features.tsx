@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 import Person, { Feature } from "../../models/person";
-import ListItemFeature from "../ListItemFeatures";
+import ListItemFeature from "../ListItemFeature";
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { weightString, hair_color, heightString, age } = person;

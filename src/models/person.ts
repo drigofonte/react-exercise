@@ -17,11 +17,11 @@ class Person {
   weight: number = 0;
 
   public get weightString(): string {
-    return this.round(this.weight);
+    return `${this.round(this.weight)}kg`;
   }
 
   public get heightString(): string {
-    return this.round(this.height);
+    return `${this.round(this.height / 100)}m`;
   }
 
   private round(val: number): string {

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Item from './item/Item';
 import Person from '../../models/person';
 import { Grid, Pagination, Stack, Typography } from '@mui/material';
@@ -55,17 +54,7 @@ const Items: React.FC = () => {
       >
         {peoplePage.map((person) => (
           <Grid key={person.id} item xs>
-            <Link
-              to={`/people/${person.id}`}
-              style={{
-                textDecoration: 'none',
-                color: 'initial'
-              }}
-            >
-              <Item
-                person={person}
-              />
-            </Link>
+            <Item person={person} />
           </Grid>
         ))}
       </Grid>

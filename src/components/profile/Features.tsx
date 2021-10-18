@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, Grid } from "@mui/material";
-import Person, { Feature } from "../../models/person";
-import ListItemFeature from "../ListItemFeature";
+import Person, { Feature as FeatureEnum } from "../../models/person";
 import './Profile.css';
 import '../Card.css';
+import FeatureIcon from "../FeatureIcon";
+import { Feature } from '@drigofonte/personal.ui.person.feature';
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { weightString, hair_color, heightString, age } = person;
@@ -29,16 +30,16 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
           }}
         >         
           <Grid item xs>
-            {ListItemFeature('age', age, Feature.age)}
+            <Feature label="age" text={age.toString()} icon={FeatureIcon(FeatureEnum.age)} />
           </Grid>
           <Grid item xs>
-            {ListItemFeature('height', heightString, Feature.height)}
+            <Feature label="height" text={heightString} icon={FeatureIcon(FeatureEnum.height)} />
           </Grid>
           <Grid item xs>
-            {ListItemFeature('weight', weightString, Feature.weight)}
+            <Feature label="weight" text={weightString} icon={FeatureIcon(FeatureEnum.weight)} />
           </Grid>
           <Grid item xs>
-            {ListItemFeature('hair colour', hair_color, Feature.hair_color)}
+            <Feature label="hair colour" text={hair_color} icon={FeatureIcon(FeatureEnum.hair_color)} />
           </Grid>
         </Grid>
       </CardContent>

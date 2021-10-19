@@ -8,10 +8,10 @@ const Features: React.FC<{ person: Person }> = ({ person }) => {
 
   return (
     <List dense>
-      <Feature label="age" text={age.toString()} icon={FeatureIcon(FeatureEnum.age)} />
-      <Feature label="height" text={heightString} icon={FeatureIcon(FeatureEnum.height)} />
-      <Feature label="weight" text={weightString} icon={FeatureIcon(FeatureEnum.weight)} />
-      <Feature label="hair colour" text={hair_color} icon={FeatureIcon(FeatureEnum.hair_color)} />
+      <Feature label="age" value={age.toString()} icon={FeatureIcon(FeatureEnum.age)} />
+      <Feature label="height" value={heightString} icon={FeatureIcon(FeatureEnum.height)} />
+      <Feature label="weight" value={weightString} icon={FeatureIcon(FeatureEnum.weight)} />
+      <Feature label="hair colour" value={hair_color} icon={FeatureIcon(FeatureEnum.hair_color)} />
     </List>
   );
 };

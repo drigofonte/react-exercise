@@ -1,7 +1,7 @@
 import { List } from "@mui/material";
 import Person, { Feature as FeatureEnum } from "../../../models/person";
 import FeatureIcon from "../../FeatureIcon";
-import { Feature } from '@drigofonte/personal.ui.person.feature';
+import { Feature } from '@drigofonte_org/base.ui.person.feature';
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { age, heightString, weightString, hair_color } = person;

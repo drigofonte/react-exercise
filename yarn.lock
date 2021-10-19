@@ -1161,10 +1161,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@drigofonte/personal.ui.person.feature@^0.0.1":
+"@drigofonte_org/base.ui.person.feature@^0.0.1":
   version "0.0.1"
-  resolved "https://node.bit.dev/@drigofonte/personal.ui.person.feature/-/@drigofonte-personal.ui.person.feature-0.0.1.tgz#f4d730d9751d6ff73817c13415d1d80b353f9639"
-  integrity sha1-9Ncw2XUdb/c4F8E0FdHYCzU/ljk=
+  resolved "https://node.bit.dev/@drigofonte_org/base.ui.person.feature/-/@drigofonte_org-base.ui.person.feature-0.0.1.tgz#5c52545ca66a4319e29560eee2178e17a1e4f675"
+  integrity sha1-XFJUXKZqQxnilWDu4heOF6Hk9nU=
   dependencies:
     "@mui/material" "5.0.4"
     core-js "^3.0.0"

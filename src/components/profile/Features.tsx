@@ -3,7 +3,7 @@ import Person, { Feature as FeatureEnum } from "../../models/person";
 import './Profile.css';
 import '../Card.css';
 import FeatureIcon from "../FeatureIcon";
-import { Feature } from '@drigofonte/personal.ui.person.feature';
+import { Feature } from '@drigofonte_org/base.ui.person.feature';
 
 const Features: React.FC<{ person: Person }> = ({ person }) => {
   const { weightString, hair_color, heightString, age } = person;

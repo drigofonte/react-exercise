@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@drigofonte_org/base.ui.card": "^0.0.1",
+    "@drigofonte_org/base.ui.card": "^0.0.2",
     "@drigofonte_org/base.ui.person.feature": "^0.0.3",
-    "@drigofonte_org/base.ui.person.profile-section": "^0.0.1",
+    "@drigofonte_org/base.ui.person.profile-section": "^0.0.2",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.1",

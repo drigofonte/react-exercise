@@ -1,15 +1,20 @@
 import Item from './item/Item';
 import Person from '../../models/person';
-import { Grid, Pagination, Stack, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import { useStore } from '../../store/store';
-import React from 'react';
+import React, { useState } from 'react';
 import ItemSkeleton from './item/ItemSkeleton';
+import NewItem from './NewItem';
+
+// Icons
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const pageSize = 10;
 
-const Items: React.FC = () => {
+const Items: React.FC<{ }> = () => {
   const [ state, dispatch ] = useStore();
   const { people, page = 1 }: { people?: Person[], page?: number } = state;
+  const [ isAddPerson, setIsAddPerson ] = useState(false);
 
   const maxPages = Math.ceil(people!.length / 10);
   const maxIndex = page * pageSize;
@@ -20,13 +25,14 @@ const Items: React.FC = () => {
     dispatch('SET_PAGE', value);
   };
 
+  const toggleIsAddPerson = () => {
+    setIsAddPerson((previous) => !previous);
+  };
+
   let content = (
     <Grid
       container
       spacing={1}
-      sx={{
-        mt: 4
-      }}
     >
       <Grid item xs>
         <ItemSkeleton />
@@ -45,19 +51,28 @@ const Items: React.FC = () => {
 
   if (people!.length > 0) {
     content = (
-      <Grid
-        container
-        spacing={1}
-        sx={{
-          mt: 4
-        }}
-      >
-        {peoplePage.map((person) => (
-          <Grid key={person.id} item xs>
-            <Item person={person} />
-          </Grid>
-        ))}
-      </Grid>
+      <Box>
+        <NewItem open={isAddPerson} onClose={toggleIsAddPerson} />
+        <Toolbar
+          sx={{
+            justifyContent: 'flex-end'
+          }}
+        >
+          <IconButton onClick={toggleIsAddPerson} color="primary">
+            <PersonAddIcon />
+          </IconButton>
+        </Toolbar>
+        <Grid
+          container
+          spacing={1}
+        >
+          {peoplePage.map((person) => (
+            <Grid key={person.id} item xs>
+              <Item person={person} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     );
   }
 
@@ -67,21 +82,6 @@ const Items: React.FC = () => {
         p: 5
       }}
     >
-      <Typography
-        variant="h4" 
-        sx={{
-          mt: 1,
-          fontWeight: 700
-        }}
-      >
-        People
-      </Typography>
-      <Typography
-        variant="caption" 
-      >
-        {people!.length > 0 ? `Page ${page} / ${maxPages}` : 'Loading...'}
-      </Typography>
-      
       {content}
 
       <Pagination

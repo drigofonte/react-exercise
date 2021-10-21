@@ -1219,12 +1219,21 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@drigofonte_org/base.ui.card@0.0.2", "@drigofonte_org/base.ui.card@^0.0.2":
+"@drigofonte_org/base.ui.card@0.0.2":
   version "0.0.2"
   resolved "https://node.bit.dev/@drigofonte_org/base.ui.card/-/@drigofonte_org-base.ui.card-0.0.2.tgz#8e7ff5f648781c0e5f1494a62a33afdf8954162e"
   integrity sha1-jn/19kh4HA5fFJSmKjOv34lUFi4=
   dependencies:
     "@mui/material" "5.0.4"
+    core-js "^3.0.0"
+
+"@drigofonte_org/base.ui.card@^0.0.5":
+  version "0.0.5"
+  resolved "https://node.bit.dev/@drigofonte_org/base.ui.card/-/@drigofonte_org-base.ui.card-0.0.5.tgz#7874d5c9f0ae98aed5516ef9d0f935b117b6782a"
+  integrity sha1-eHTVyfCumK7VUW750Pk1sRe2eCo=
+  dependencies:
+    "@mui/material" "5.0.4"
+    "@mui/system" "5.0.4"
     core-js "^3.0.0"
 
 "@drigofonte_org/base.ui.person.feature@^0.0.3":
@@ -1665,7 +1674,7 @@
     "@emotion/cache" "^11.4.0"
     prop-types "^15.7.2"
 
-"@mui/system@^5.0.2", "@mui/system@^5.0.4":
+"@mui/system@5.0.4", "@mui/system@^5.0.2", "@mui/system@^5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@mui/system/-/system-5.0.4.tgz#cff806533c9063efc9e1c6ec99731b64ac0632e8"
   integrity sha512-d+7dhT0eBGrPoah91GX1Q2i4S/5QsiVAp7e06lIMC/LXFWQSrsSnvNbVnW8TgttCvo0ypQ/RHNmWZ/f1eAbd/Q==

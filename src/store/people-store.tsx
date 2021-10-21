@@ -17,6 +17,11 @@ const configureStore = () => {
       PersonUtils.normaliseFriends(people, peopleNamesToIds);
       return { people, peopleNamesToIds };
     },
+    ADD_PERSON: (state, person) => {
+      const people = state.people;
+      people.unshift(person);
+      return { people };
+    },
     SET_PEOPLE: (state, people) => {
       return { people };
     },

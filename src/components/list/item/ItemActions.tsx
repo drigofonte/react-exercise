@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CardActions, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import Person from "../../../models/person";
@@ -8,12 +8,36 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from '@mui/icons-material/Star';
 
+const favouritesKey = 'favourites';
+
+const fetchFavourites = () => {
+  return JSON.parse(localStorage.getItem(favouritesKey) ?? '{}');
+}
+
+const storeFavourites = (isFavourite: boolean, { id }: Person) => {
+  const favourites = fetchFavourites();
+  if (isFavourite) {
+    favourites[id] = true;
+  } else {
+    delete favourites[id];
+  }
+
+  localStorage.setItem(favouritesKey, JSON.stringify(favourites));
+}
+
 const ItemActions: React.FC<{ person: Person }> = ({ person }) => {
   const [ favourite, setFavourite ] = useState(false);
 
   const toggleFavouriteHandler = () => {
-    setFavourite(!favourite);
+    const isFavourite = !favourite;
+    setFavourite(isFavourite);
+    storeFavourites(isFavourite, person);
   };
+
+  useEffect(() => {
+    const favourites = fetchFavourites();
+    setFavourite(favourites[person.id]);
+  }, [person.id]);
 
   return (
     <CardActions

@@ -1,6 +1,6 @@
 import Item from './item/Item';
 import Person from '../../models/person';
-import { Box, Grid, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
+import { Grid, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import { useStore } from '../../store/store';
 import React, { useState } from 'react';
 import ItemSkeleton from './item/ItemSkeleton';
@@ -51,7 +51,7 @@ const Items: React.FC<{ }> = () => {
 
   if (people!.length > 0) {
     content = (
-      <Box>
+      <>
         <NewItem open={isAddPerson} onClose={toggleIsAddPerson} />
         <Toolbar
           sx={{
@@ -72,7 +72,7 @@ const Items: React.FC<{ }> = () => {
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </>
     );
   }
 

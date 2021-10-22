@@ -19,6 +19,7 @@ const configureStore = () => {
     },
     ADD_PERSON: (state, person) => {
       const people = state.people;
+      person.id = people.length;
       people.unshift(person);
       return { people };
     },

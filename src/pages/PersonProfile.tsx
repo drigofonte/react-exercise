@@ -22,7 +22,7 @@ const PersonProfile = () => {
   let content = <div></div>;
   if (person) {
     content = 
-      <Box>
+      <>
         <AppBar
           position="static"
           color="transparent"
@@ -65,7 +65,7 @@ const PersonProfile = () => {
             <Friends person={person} />
           </Box>
         </Box>
-      </Box>;
+      </>;
   }
 
   return content;

@@ -5,7 +5,7 @@ import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 
 import { Feature } from "../models/person";
 
-const FeatureIcon = (feature: Feature) => {
+const FeatureIcon: React.FC<{ feature: Feature }> = ({ feature }) => {
   switch (feature) {
     case Feature.height:
       return <HeightOutlinedIcon />;

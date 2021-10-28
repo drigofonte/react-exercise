@@ -1,10 +1,11 @@
 import Item from './item/Item';
-import Person from '../../models/person';
 import { Grid, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
-import { useStore } from '../../store/store';
 import React, { useState } from 'react';
 import ItemSkeleton from './item/ItemSkeleton';
 import NewItem from './NewItem';
+// import { useFetchUsersQuery } from '../../features/users/users-api-slice';
+import { setPage } from '../../features/users/users-slice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 // Icons
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -12,17 +13,22 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 const pageSize = 10;
 
 const Items: React.FC<{ }> = () => {
-  const [ state, dispatch ] = useStore();
-  const { people, page = 1 }: { people?: Person[], page?: number } = state;
   const [ isAddPerson, setIsAddPerson ] = useState(false);
 
-  const maxPages = Math.ceil(people!.length / 10);
+  const page = useAppSelector((state) => state.users.page);
+  const users = useAppSelector((state) => state.users.users);
+  const dispatch = useAppDispatch();
+
+  // const { data: indexedUsers = { users: [] }, isFetching } = useFetchUsersQuery();
+  // const { users } = indexedUsers;
+
+  const maxPages = Math.ceil(users.length / 10);
   const maxIndex = page * pageSize;
   const minIndex = maxIndex - pageSize;
-  const peoplePage = people!.filter((p, i) => i >= minIndex && i < maxIndex);
+  const peoplePage = users.filter((u, i) => i >= minIndex && i < maxIndex);
 
   const setPageHandler = (event: React.ChangeEvent<unknown>, value: number) => {
-    dispatch('SET_PAGE', value);
+    dispatch(setPage(value));
   };
 
   const toggleIsAddPerson = () => {
@@ -49,7 +55,8 @@ const Items: React.FC<{ }> = () => {
     </Grid>
   );
 
-  if (people!.length > 0) {
+  // if(!isFetching) {
+  if (users.length > 0) {
     content = (
       <>
         <NewItem open={isAddPerson} onClose={toggleIsAddPerson} />

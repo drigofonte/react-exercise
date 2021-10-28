@@ -2,7 +2,6 @@ import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from 'react-router-dom';
 import Person from "../../models/person";
-import * as Store from "../../store/store";
 import Friends from "./Friends";
 
 describe('<Friends />', () => {
@@ -18,16 +17,15 @@ describe('<Friends />', () => {
       jane.name = 'Jane Doe';
       jane.thumbnail = 'https://test.domain/jane.jpeg';
       const people = [ john, jane ];
-      const peopleNamesToIds = new Map<string, number>();
-      peopleNamesToIds.set(john.name, john.id);
-      peopleNamesToIds.set(jane.name, jane.id);
+      const peopleNamesToIds = {
+        [john.name]: john.id,
+        [jane.name]: jane.id
+      };
 
       const person = new Person();
       person.friends = [ john.name, jane.name ];
 
-      jest.spyOn(Store, 'useStore').mockReturnValue([ { peopleNamesToIds, people }, (id, payload) => {} ]);
-
-      render(<BrowserRouter><Friends person={person} /></BrowserRouter>);
+      render(<BrowserRouter><Friends person={person} users={people} namesToIds={peopleNamesToIds} /></BrowserRouter>);
 
       // Assert
       const johnAvatar = screen.getByAltText(john.name);
@@ -39,13 +37,11 @@ describe('<Friends />', () => {
     it('should render an empty list message', () => {
       // Arrange
       const people: Person[] = [];
-      const peopleNamesToIds = new Map<string, number>();
+      const peopleNamesToIds = {};
       const person = new Person();
       person.name = 'John Doe';
 
-      jest.spyOn(Store, 'useStore').mockReturnValue([ { peopleNamesToIds, people }, (id, payload) => {} ]);
-
-      render(<BrowserRouter><Friends person={person} /></BrowserRouter>);
+      render(<BrowserRouter><Friends person={person} users={people} namesToIds={peopleNamesToIds} /></BrowserRouter>);
 
       // Assert
       const message = screen.getByText(/no friends/gmi);

@@ -2,13 +2,14 @@ import React from "react";
 import { Backdrop, Dialog, DialogContent } from "@mui/material";
 import NewItemForm from './NewItemForm';
 import Person from "../../models/person";
-import { useStore } from '../../store/store';
+import { addUser } from '../../features/users/users-slice';
+import { useAppDispatch } from '../../app/hooks';
 
 const NewItem: React.FC<{ open: boolean, onClose: () => void }> = ({ open, onClose }) => {
-  const [ , dispatch ] = useStore();
+  const dispatch = useAppDispatch();
 
   const saveHandler = (person: Person) => {
-    dispatch('ADD_PERSON', person);
+    dispatch(addUser(person));
     onClose();
   };
 

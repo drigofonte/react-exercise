@@ -1,21 +1,18 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Container from '@mui/material/Container';
+import { useAppDispatch } from './app/hooks';
+import { fetchUsers } from './features/users/users-actions';
 import './App.css';
 import PeoplePage from './pages/People';
 import PersonProfilePage from './pages/PersonProfile';
-import { useStore } from './store/store';
-import Person from './models/person';
 import { useEffect } from 'react';
 
 function App() {
-  const [ state, dispatch ] = useStore(false);
-  const { people }: { people?: Person[] } = state;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (people?.length === 0) {
-      dispatch('LOAD_PEOPLE', null);
-    }
-  }, [dispatch, people]);
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
   return (
     <Container 

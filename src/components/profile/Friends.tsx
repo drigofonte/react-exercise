@@ -1,24 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import Person from "../../models/person";
-import { useStore } from "../../store/store";
 import { ProfileSection } from '@drigofonte_org/base.ui.person.profile-section';
 
 function findPerson(id: number | undefined, people: Person[]): Person | undefined {
   return people.find((person) => person.id === id);
 }
 
-const Friends: React.FC<{ person: Person }> = ({ person }) => {
-  const [ state ] = useStore();
-  const { peopleNamesToIds, people }: { peopleNamesToIds?: Map<string, number>, people?: Person[] } = state;
-
+const Friends: React.FC<{ person: Person, users: Person[], namesToIds: {[key: string]: number} }> = ({ person, users, namesToIds }) => {
   let content = <Typography variant="body1">{person.name} has no friends 🙁</Typography>;
 
   if (person.friends.length > 0) {
     content = <List>
       {person.friends.map((friendName) => {
-        const friendId = peopleNamesToIds?.get(friendName);
-        const friend = findPerson(friendId, people!);
+        const friendId = namesToIds[friendName];
+        const friend = findPerson(friendId, users);
         let content;
 
         if (friend) {

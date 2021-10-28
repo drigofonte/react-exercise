@@ -14,8 +14,8 @@ describe('PersonUtils', () => {
 
       const map = PersonUtils.mapNamesToIds(people);
 
-      expect(map.get(john.name)).toBe(1);
-      expect(map.get(jane.name)).toBe(2);
+      expect(map[john.name]).toBe(1);
+      expect(map[jane.name]).toBe(2);
     });
   });
 
@@ -35,10 +35,11 @@ describe('PersonUtils', () => {
       const friends = [ john.name, jane.name ]
       lewis.friends = [ ...friends ];
 
-      const namesToIds = new Map<string, number>();
-      namesToIds.set(john.name, john.id);
-      namesToIds.set(jane.name, jane.id);
-      namesToIds.set(lewis.name, lewis.id);
+      const namesToIds = {
+        [john.name]: john.id,
+        [jane.name]: jane.id,
+        [lewis.name]: lewis.id
+      };
 
       // Act
       PersonUtils.normaliseFriends([ john, jane, lewis ], namesToIds);
